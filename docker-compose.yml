@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  php-dev-server:
+    image: php:fpm
+    container_name: php-dev-server
+    volumes:
+      - ./server:/var/www
+
+  nginx-dev-server:
+    image: nginx:alpine
+    container_name: nginx-dev-server
+    ports:
+      - 8000:80
+    volumes:
+      - ./server:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
